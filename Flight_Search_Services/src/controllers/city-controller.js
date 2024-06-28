@@ -75,13 +75,13 @@ const update = async (req,res)=>{
 }
 
 //GET. -> /city/:id
-const get = async (req,res)=>{
+const getCity = async (req,res)=>{
     try{
          const city = await cityservices.getCity(req.params.id);
          return res.status(200).json({
             data:city,
             success:true,
-            message:'all city available',
+            message:' city is available',
             error:{}
 
          })
@@ -97,10 +97,34 @@ const get = async (req,res)=>{
     }
 }
 
+//GET. -> /city/findAll
+const getAllCities = async (req,res)=>{
+    try{
+        
+    const cities = await cityservices.getAllCities();
+    return res.status(200).json({
+        data:cities,
+        success:true,
+        message:"all cities is show",
+        error:{}
+    })
+
+    }catch(error){
+        console.log(error);
+        return res.status(500).json({
+            data:{},
+            success:false,
+            message:"somthing went wrong at city controller layer ",
+            error:{error}
+        })
+    }
+}
+
 module.exports = {
     create,
     destroy,
     update,
-    get
+    getCity,
+    getAllCities
 
 }

@@ -1,9 +1,11 @@
 const {City} = require('../models/index')
 
+//Repository
 class CityRepository{
 
   //follow to crud opreation in city model
 
+  //create
   async createCity({name}){
     try{
       const city = await City.create({name})
@@ -14,6 +16,7 @@ class CityRepository{
     }
   }
 
+  //Delete
   async deleteCity(cityId){
     try{
       const city = await City.destroy({
@@ -28,6 +31,7 @@ class CityRepository{
     }
   }
 
+  //update
   async updateCity(cityId,data){
     //we can use also this mettthod
     // try{
@@ -46,6 +50,7 @@ class CityRepository{
       throw {error};
     }
   
+  //getCity
   async getCity(cityId){
 
     try{
@@ -60,6 +65,20 @@ class CityRepository{
 
 
   }
+
+  //getAllCities
+  async getAllCities(){
+    try{
+      const cities = await City.findAll();
+      return cities;
+      
+    }catch(error){
+      console.log("somthing went wrong in city repository");
+      throw {error};
+    
+    }
+  }
+
 
 
 }
