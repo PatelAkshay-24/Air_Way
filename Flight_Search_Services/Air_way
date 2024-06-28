@@ -1,0 +1,13 @@
+Air_Way Project
+--------------------------------------------------
+Sequelize command :
+--------------------------------------------------
+create database: npx sequelize db:create
+
+Generate Model: 
+
+npx sequelize model:generate --name city --attribute name:String
+(When you are use in sequelize cli that time use this command)
+
+migration command:
+npx sequelize db:migration
